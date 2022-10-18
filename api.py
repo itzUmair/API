@@ -23,3 +23,8 @@ async def main():
         "owner" : "umair",
         "tech" : "fastApi"
     }
+@app.get("/user")
+def user():
+    with open("userdata.txt", "r") as file:
+        data = file.readlines()
+    return data
