@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -14,6 +15,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class user(BaseModel):
+    user : str
 
 
 @app.get("/")
@@ -30,6 +34,6 @@ def user():
     return data
 
 @app.post("/userdata/")
-def data(userData):
+def data(userData : user):
     with open("userdata", "w") as file:
         file.write(userData)
