@@ -28,3 +28,8 @@ def user():
     with open("userdata.txt", "r") as file:
         data = file.readlines()
     return data
+
+@app.post("/userdata/")
+def data(userData):
+    with open("userdata", "w") as file:
+        file.write(userData)
