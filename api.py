@@ -17,8 +17,8 @@ app.add_middleware(
 )
 
 class User(BaseModel):
-    "name" : str
-    "passw" : str
+    name : str
+    passw : str
 
 
 @app.get("/")
