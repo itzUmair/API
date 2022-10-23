@@ -16,8 +16,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-class user(BaseModel):
-    user : str
+# class user(BaseModel):
+#     user : str
 
 
 @app.get("/")
@@ -33,9 +33,9 @@ def user():
         data = file.readlines()
     return data
 
-@app.post("/userdata/{studnet_id}")
-def data(student_id : int, student : user):
-    with open("userdata", "w") as file:
-        file.write(student)
+# @app.post("/userdata/{studnet_id}")
+# def data(student_id : int, student : user):
+#     with open("userdata", "w") as file:
+#         file.write(student)
     
-    return(student)
+#     return(student)
