@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -37,5 +38,5 @@ def user():
 
 @app.post("/userdata")
 async def data(user : User):
-    response = await user.dict()
+    response = jsonable_encoder(user)
     return(response)
