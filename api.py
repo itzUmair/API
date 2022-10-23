@@ -36,7 +36,6 @@ def user():
         data = file.readlines()
     return data
 
-@app.post("/userdata")
-async def data(user : User):
-    response = jsonable_encoder(user)
-    return(response)
+@app.post("/userdata/{user_id}")
+async def data(user_id : int, user : User):
+    return(user)
