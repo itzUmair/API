@@ -36,5 +36,5 @@ def user():
     return data
 
 @app.post("/userdata/")
-def data(user : User):
+async def data(user : User):
     return(user)
