@@ -17,9 +17,8 @@ app.add_middleware(
 )
 
 class User(BaseModel):
-    userId : int
-    username : str
-    userpass : str
+    name : str
+    passw : str
 
 
 @app.get("/")
@@ -36,6 +35,6 @@ def user():
         data = file.readlines()
     return data
 
-@app.post("/userdata/{student_id}")
-def data(student_id : int, user : User):
+@app.post("/userdata/")
+def data(user : User):
     return(user)
