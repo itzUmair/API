@@ -35,6 +35,7 @@ def user():
         data = file.readlines()
     return data
 
-@app.post("/userdata/")
+@app.post("/userdata")
 async def data(user : User):
-    return(user)
+    response = await user.dict()
+    return(response)
