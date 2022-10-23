@@ -33,7 +33,9 @@ def user():
         data = file.readlines()
     return data
 
-@app.post("/userdata/")
-def data(userData : user):
+@app.post("/userdata/{studnet_id}")
+def data(student_id : int, student : user):
     with open("userdata", "w") as file:
-        file.write(userData)
+        file.write(student)
+    
+    return(student)
