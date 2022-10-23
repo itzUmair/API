@@ -19,7 +19,14 @@ app.add_middleware(
 
 class User(BaseModel):
     name : str
-    passw : str
+    password : str
+
+users = {
+    1: {
+        "name" : "umair",
+        "password" : "123456"
+    }
+}
 
 
 @app.get("/")
@@ -30,12 +37,11 @@ async def main():
         "tech" : "fastApi"
     }
 
-@app.get("/user")
-def user():
-    with open("userdata.txt", "r") as file:
-        data = file.readlines()
-    return data
+@app.get("/user/{user_id}")
+def user(user_id : int):
+    return users[user_id]
 
 @app.post("/userdata/{user_id}")
 async def data(user_id : int, user : User):
-    return(user)
+    users[user_id] = user
+    return user[user_id]
